@@ -1,0 +1,33 @@
+#include "WaferStage.hpp"
+
+namespace axiom::generated::WaferStage {
+
+State initial_state() {
+  return State::Idle;
+}
+
+State transition(State current, Event event) {
+  switch (current) {
+  case State::Idle:
+    switch (event) {
+    case Event::StartMove:
+      return State::Moving;
+    default:
+      break;
+    }
+    break;
+  case State::Moving:
+    switch (event) {
+    case Event::Stop:
+      return State::Idle;
+    default:
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+  return current;
+}
+
+} // namespace axiom::generated::WaferStage

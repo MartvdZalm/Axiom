@@ -1,0 +1,11 @@
+---
+Checks: >
+  bugprone-*,
+  clang-analyzer-*,
+  cppcoreguidelines-init-variables,
+  modernize-use-nullptr,
+  readability-const-return-type,
+  -modernize-use-trailing-return-type
+WarningsAsErrors: ''
+HeaderFilterRegex: 'axiom/.*'
+FormatStyle: file

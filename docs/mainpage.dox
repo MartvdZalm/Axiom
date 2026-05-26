@@ -1,0 +1,48 @@
+/**
+ * @mainpage Axiom Compiler Documentation
+ *
+ * @section intro Introduction
+ *
+ * Axiom is a model-driven engineering (MDE) framework that compiles a domain-specific
+ * language (`.ax` files) for hierarchical state machines into C++.
+ *
+ * @section pipeline Compiler pipeline
+ *
+ * End-to-end flow for Milestone 1:
+ *
+ * @code
+ *   Source (.ax)
+ *     → axiom::core::SourceManager   (load & locate)
+ *     → axiom::lexer::Lexer          (tokenize)
+ *     → axiom::parser::Parser        (build AST)
+ *     → axiom::semantic::*           (validate, symbol tables)
+ *     → axiom::codegen::CppGenerator (emit C++)
+ * @endcode
+ *
+ * Future milestones add IR lowering, transforms, and incremental recomputation between
+ * semantic analysis and codegen.
+ *
+ * @section ast AST layer (axiom::ast)
+ *
+ * The parser produces a @ref axiom::ast::TranslationUnit containing one or more
+ * @ref axiom::ast::MachineDecl nodes. Each machine owns @ref axiom::ast::StateDecl
+ * and @ref axiom::ast::TransitionDecl children. Semantic analysis reads this tree
+ * without modifying it.
+ *
+ * @section core Core infrastructure (axiom::core)
+ *
+ * - @ref axiom::core::SourceManager — owns source text and formats locations.
+ * - @ref axiom::core::DiagnosticBag — collects errors and warnings from every phase.
+ * - @ref axiom::core::Result — propagates success/failure without exceptions.
+ *
+ * @section lexer Lexical analysis (axiom::lexer)
+ *
+ * @ref axiom::lexer::Lexer turns a source buffer into a stream of @ref axiom::lexer::Token
+ * values classified by @ref axiom::lexer::TokenKind. Tokens carry @ref axiom::core::SourceSpan
+ * data used by the parser and diagnostics.
+ *
+ * @section codegen Code generation
+ *
+ * @ref axiom::codegen::CppGenerator lowers a validated AST into header/source pairs
+ * (enum classes and switch-based dispatch in Milestone 1).
+ */

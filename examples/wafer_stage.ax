@@ -1,0 +1,6 @@
+machine WaferStage {
+  state Idle
+  state Moving
+  transition Idle -> Moving on StartMove
+  transition Moving -> Idle on Stop
+}

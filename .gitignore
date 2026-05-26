@@ -1,0 +1,25 @@
+# Build
+build/
+out/
+cmake-build-*/
+compile_commands.json
+
+# Generated
+generated/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# vcpkg
+vcpkg_installed/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Test artifacts
+*.tmp

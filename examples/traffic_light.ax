@@ -1,0 +1,11 @@
+machine TrafficLight {
+
+  state Red
+  state Green
+  state Yellow
+
+  transition Red -> Green on Timer
+  transition Green -> Yellow on Timer
+  transition Yellow -> Red on Timer
+
+}
