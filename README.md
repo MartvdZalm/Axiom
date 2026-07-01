@@ -1,5 +1,4 @@
 # Axiom
-
 Axiom is a reactive **Model-Driven Engineering (MDE)** framework written in modern C++23.
 
 It compiles a domain-specific language (DSL) for hierarchical state machines through a compiler-style pipeline into readable and efficient C++ code.
