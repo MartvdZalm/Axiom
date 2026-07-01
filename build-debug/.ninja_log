@@ -1,0 +1,25 @@
+# ninja log v7
+4	233	1782903209521930757	axiom-cli/CMakeFiles/axiom.dir/src/main.cpp.o	dbbb3005a5c760e6
+3	245	1782903209520534204	axiom-lexer/CMakeFiles/axiom_lexer.dir/src/token.cpp.o	80b3511f2fbaf07e
+3	442	1782903209520213493	axiom-lexer/CMakeFiles/axiom_lexer.dir/src/lexer.cpp.o	6429aeb254e3bcc2
+4	475	1782903209521176418	axiom-semantic/CMakeFiles/axiom_semantic.dir/src/symbol_table.cpp.o	70513149c1fc5f09
+2	516	1782903209519997866	axiom-ast/CMakeFiles/axiom_ast.dir/src/printer.cpp.o	eda34d4b87dee559
+2	533	1782903209519176776	axiom-core/CMakeFiles/axiom_core.dir/src/diagnostic.cpp.o	6554b9053d0380fa
+5	574	1782903209522432386	axiom-cli/CMakeFiles/axiom.dir/src/pipeline.cpp.o	275b025d8941e43b
+4	603	1782903209521411295	axiom-parser/CMakeFiles/axiom_parser.dir/src/parser.cpp.o	a742e84e5ef89430
+2	638	1782903209519750698	axiom-core/CMakeFiles/axiom_core.dir/src/source_manager.cpp.o	68961e13073aba1b
+3	639	1782903209520899165	axiom-semantic/CMakeFiles/axiom_semantic.dir/src/analyzer.cpp.o	b7e6a5f2b7685358
+234	678	1782903209751173754	tests/CMakeFiles/axiom_tests.dir/lexer_tests.cpp.o	5b4b422919dd6f00
+4	728	1782903209521663005	axiom-codegen/CMakeFiles/axiom_codegen.dir/src/cpp_generator.cpp.o	aee5839553d3dbb1
+245	734	1782903209762457514	tests/CMakeFiles/axiom_tests.dir/parser_tests.cpp.o	a0054e44776ec2
+638	802	1782903210155561462	axiom-core/libaxiom_core.a	e60bdbbc89a3e576
+802	838	1782903210319884208	axiom-ast/libaxiom_ast.a	12a3de19876f8074
+803	849	1782903210320149210	axiom-lexer/libaxiom_lexer.a	f4d69ff32f38fa0e
+5	858	1782903209522170051	axiom-cli/CMakeFiles/axiom.dir/src/commands.cpp.o	a9a80e03c692cab5
+838	872	1782903210355751466	axiom-semantic/libaxiom_semantic.a	3346dca1f94bd70c
+849	880	1782903210366408930	axiom-parser/libaxiom_parser.a	6d350eead45d0601
+872	902	1782903210389335329	axiom-codegen/libaxiom_codegen.a	7a93b9b525f65d57
+442	923	1782903209959790161	tests/CMakeFiles/axiom_tests.dir/semantic_tests.cpp.o	ecae93ac2224c8bd
+902	931	1782903210420009252	axiom-cli/axiom	52164153c48b9a32
+475	953	1782903209992110014	tests/CMakeFiles/axiom_tests.dir/codegen_tests.cpp.o	1879aa719664cb1b
+953	986	1782903210470344755	tests/axiom_tests	eef1bb16668a1a54

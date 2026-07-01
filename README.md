@@ -1,5 +1,3 @@
-Here’s a cleaner, more professional README rewrite that improves onboarding, removes machine-specific paths, and presents the project more like a modern compiler/framework project.
-
 # Axiom
 
 Axiom is a reactive **Model-Driven Engineering (MDE)** framework written in modern C++23.
@@ -8,53 +6,47 @@ It compiles a domain-specific language (DSL) for hierarchical state machines thr
 
 ---
 
-# Features
+## Features
 
-## Current Milestone
+### Current Milestone
 
-* Lexer with source locations and diagnostics
-* Handwritten recursive-descent parser
-* Basic parser recovery
-* Immutable AST nodes
-* AST debug printer
-* Semantic validation
+- Lexer with source locations and diagnostics
+- Handwritten recursive-descent parser
+- Basic parser recovery
+- Immutable AST nodes
+- AST debug printer
+- Semantic validation
+  - Duplicate state detection
+  - Unknown transition endpoint detection
+- C++ code generation
+  - Enum-based state representation
+  - Switch-based dispatch generation
+- Command-line interface
+  - `parse`
+  - `ast`
+  - `generate`
 
-  * Duplicate state detection
-  * Unknown transition endpoint detection
-* C++ code generation
+### Planned
 
-  * Enum-based state representation
-  * Switch-based dispatch generation
-* Command-line interface
-
-  * `parse`
-  * `ast`
-  * `generate`
-
-## Planned
-
-* Incremental dependency graphs
-* Intermediate Representation (IR) lowering
-* Transformation passes
-* GUI tooling
-* Live editing and hot reload
-* Language server support
+- Incremental dependency graphs
+- Intermediate Representation (IR) lowering
+- Transformation passes
+- GUI tooling
+- Live editing and hot reload
+- Language server support
 
 ---
 
-# Requirements
+## Requirements
 
-* CMake 3.30+
-* C++23 compiler
-
-  * MSVC 2022
-  * Clang 18+
-  * GCC 14+
-* [vcpkg](https://vcpkg.io/)
+- CMake 3.30+
+- C++23 compiler
+  - macOS: Apple Clang (via Xcode Command Line Tools)
+- Ninja (required on macOS setup)
 
 ---
 
-# Quick Start
+## Quick Start
 
 Clone the repository:
 
@@ -63,51 +55,70 @@ git clone <repository-url>
 cd Axiom
 ```
 
-Set the `VCPKG_ROOT` environment variable.
+### macOS Setup (First Time Only)
 
-## Windows (PowerShell)
-
-```powershell
-$env:VCPKG_ROOT = "C:\path\to\vcpkg"
-```
-
-## Linux / macOS
+Install required tools:
 
 ```bash
-export VCPKG_ROOT="$HOME/vcpkg"
+xcode-select --install
 ```
 
-Configure and build:
+Install build tools:
 
 ```bash
-cmake --preset default
-cmake --build build --config Release
+brew install cmake ninja
 ```
 
-Run tests:
+### Configure & Build
+
+Debug build:
 
 ```bash
-ctest --preset default
+cmake --preset debug
+cmake --build build-debug
 ```
 
----
-
-# Build Presets
-
-Axiom ships with predefined CMake presets.
-
-## Default Visual Studio Build
+Release build:
 
 ```bash
-cmake --preset default
-cmake --build build --config Release
+cmake --preset release
+cmake --build build-release
 ```
 
-## Ninja Release Build
+### Run the CLI
+
+After building:
+
+Debug build:
+```bash
+./build-debug/axiom parse examples/wafer_stage.ax
+./build-debug/axiom ast examples/wafer_stage.ax
+./build-debug/axiom generate examples/wafer_stage.ax -o generated
+```
+
+Release build:
+```bash
+./build-release/axiom parse examples/wafer_stage.ax
+./build-release/axiom ast examples/wafer_stage.ax
+./build-release/axiom generate examples/wafer_stage.ax -o generated
+```
+
+### Build Presets
+
+Axiom uses macOS-native CMake presets.
+
+#### Debug build
 
 ```bash
-cmake --preset ninja-release
-cmake --build build-ninja
+cmake --preset debug
+cmake --build build-debug
+```
+
+#### Release build
+
+```bash
+cmake --preset release
+cmake --build build-release
 ```
 
 ---
@@ -134,32 +145,30 @@ axiom generate examples/wafer_stage.ax -o generated
 
 ---
 
-# Project Layout
+## Project Layout
 
-| Module            | Responsibility                               |
-| ----------------- | -------------------------------------------- |
-| `axiom-core`      | Diagnostics, sources, utilities, `Result<T>` |
-| `axiom-ast`       | AST node definitions and printers            |
-| `axiom-lexer`     | Tokenization                                 |
-| `axiom-parser`    | Recursive-descent parser                     |
-| `axiom-semantic`  | Semantic analysis and symbol tables          |
-| `axiom-ir`        | Intermediate representation (planned)        |
-| `axiom-transform` | Transformation passes (planned)              |
-| `axiom-codegen`   | C++ code generation                          |
-| `axiom-runtime`   | Shared runtime support                       |
-| `axiom-cli`       | Command-line frontend                        |
+| Module | Responsibility |
+|--------|----------------|
+| axiom-core | Diagnostics, sources, utilities, Result<T> |
+| axiom-ast | AST node definitions and printers |
+| axiom-lexer | Tokenization |
+| axiom-parser | Recursive-descent parser |
+| axiom-semantic | Semantic analysis and symbol tables |
+| axiom-ir | Intermediate representation (planned) |
+| axiom-transform | Transformation passes (planned) |
+| axiom-codegen | C++ code generation |
+| axiom-runtime | Shared runtime support |
+| axiom-cli | Command-line frontend |
 
 ---
 
-# Documentation
+## Documentation
 
 Coding conventions are documented in:
 
-```text
-docs/CODING_STANDARDS.md
-```
+`docs/CODING_STANDARDS.md`
 
-## API Documentation
+### API Documentation
 
 Generate API documentation using Doxygen:
 
@@ -168,30 +177,51 @@ cd docs
 doxygen Doxyfile
 ```
 
-Open:
+Then open:
 
-```text
+```bash
 build/docs/html/index.html
 ```
 
-Requires [Doxygen](https://www.doxygen.nl/) to be installed.
+Requires Doxygen:
+
+https://www.doxygen.nl/
 
 ---
 
-# Development Notes
+## Developer Workflow
 
-`CMakePresets.json` is platform-independent and uses the `VCPKG_ROOT` environment variable.
+Typical workflow:
 
-Machine-specific overrides should be placed in:
-
-```text
-CMakeUserPresets.json
+```bash
+cmake --preset debug
+cmake --build build-debug
 ```
 
-This file should not be committed to source control.
+Rebuild after changes:
+
+```bash
+cmake --build build-debug
+```
+
+For release builds:
+
+```bash
+cmake --preset release
+cmake --build build-release
+```
 
 ---
 
-# License
+## Notes
+
+- CMake presets are configured for macOS development.
+- Ninja is required for the build system.
+- Debug builds include symbols and are suitable for development.
+- Release builds are optimized for performance.
+
+---
+
+## License
 
 TBD

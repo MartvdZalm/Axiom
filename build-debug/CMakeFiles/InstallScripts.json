@@ -1,0 +1,19 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/mart/Projects/Axiom/build-debug/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-core/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-ast/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-lexer/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-parser/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-semantic/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-ir/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-transform/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-codegen/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-runtime/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/axiom-cli/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/tests/cmake_install.cmake",
+		"/Users/mart/Projects/Axiom/build-debug/examples/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

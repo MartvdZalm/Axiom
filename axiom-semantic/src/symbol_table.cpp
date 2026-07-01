@@ -1,9 +1,12 @@
 #include <axiom/semantic/symbol_table.hpp>
 
-namespace axiom::semantic {
+namespace axiom::semantic
+{
 
-bool MachineSymbolTable::declare_state(std::string name, std::size_t ast_index) {
-    if (state_index_.contains(name)) {
+bool MachineSymbolTable::declare_state(std::string name, std::size_t ast_index)
+{
+    if (state_index_.contains(name))
+    {
         return false;
     }
     const auto index = states_.size();
@@ -12,8 +15,10 @@ bool MachineSymbolTable::declare_state(std::string name, std::size_t ast_index) 
     return true;
 }
 
-void MachineSymbolTable::declare_event(std::string name) {
-    if (event_index_.contains(name)) {
+void MachineSymbolTable::declare_event(std::string name)
+{
+    if (event_index_.contains(name))
+    {
         return;
     }
     const auto index = events_.size();
@@ -21,11 +26,13 @@ void MachineSymbolTable::declare_event(std::string name) {
     events_.push_back(EventSymbol{std::move(name)});
 }
 
-bool MachineSymbolTable::has_state(std::string_view name) const {
+bool MachineSymbolTable::has_state(std::string_view name) const
+{
     return state_index_.contains(std::string(name));
 }
 
-bool MachineSymbolTable::has_event(std::string_view name) const {
+bool MachineSymbolTable::has_event(std::string_view name) const
+{
     return event_index_.contains(std::string(name));
 }
 

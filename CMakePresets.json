@@ -7,25 +7,24 @@
   },
   "configurePresets": [
     {
-      "name": "default",
-      "displayName": "Default (vcpkg)",
-      "generator": "Visual Studio 17 2022",
-      "binaryDir": "${sourceDir}/build",
+      "name": "debug",
+      "displayName": "macOS Debug (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-debug",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_CXX_STANDARD": "23",
+        "CMAKE_BUILD_TYPE": "Debug",
         "AXIOM_BUILD_TESTS": "ON"
       }
     },
     {
-      "name": "ninja-release",
-      "displayName": "Ninja Release",
+      "name": "release",
+      "displayName": "macOS Release (Ninja)",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build-ninja",
+      "binaryDir": "${sourceDir}/build-release",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_CXX_STANDARD": "23",
+        "CMAKE_BUILD_TYPE": "Release",
         "AXIOM_BUILD_TESTS": "ON"
       }
     }

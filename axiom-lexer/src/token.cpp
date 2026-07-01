@@ -1,9 +1,12 @@
 #include <axiom/lexer/token.hpp>
 
-namespace axiom::lexer {
+namespace axiom::lexer
+{
 
-const char* token_kind_name(TokenKind kind) {
-    switch (kind) {
+const char* token_kind_name(TokenKind kind)
+{
+    switch (kind)
+    {
     case TokenKind::EndOfFile:
         return "EOF";
     case TokenKind::Identifier:

@@ -1,20 +1,19 @@
 #include <axiom/codegen/cpp_generator.hpp>
 #include <axiom/parser/parser.hpp>
 #include <axiom/semantic/analyzer.hpp>
-
 #include <catch2/catch_test_macros.hpp>
-
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 
 using namespace axiom;
 
-namespace {
+namespace
+{
 
-std::string read_fixture(const char* relative) {
-    const std::filesystem::path path =
-        std::filesystem::path(AXIOM_TEST_DATA_DIR) / relative;
+std::string read_fixture(const char* relative)
+{
+    const std::filesystem::path path = std::filesystem::path(AXIOM_TEST_DATA_DIR) / relative;
     std::ifstream in(path);
     REQUIRE(in);
     std::ostringstream ss;
@@ -24,7 +23,8 @@ std::string read_fixture(const char* relative) {
 
 } // namespace
 
-TEST_CASE("codegen snapshot for WaferStage", "[codegen]") {
+TEST_CASE("codegen snapshot for WaferStage", "[codegen]")
+{
     const auto source = read_fixture("wafer_stage.ax");
     const auto expected_header = read_fixture("expected/WaferStage.hpp.snap");
     const auto expected_source = read_fixture("expected/WaferStage.cpp.snap");

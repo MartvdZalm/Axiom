@@ -1,10 +1,10 @@
 #include <axiom/parser/parser.hpp>
-
 #include <catch2/catch_test_macros.hpp>
 
 using namespace axiom;
 
-namespace {
+namespace
+{
 
 constexpr const char* kWaferStage = R"(machine WaferStage {
   state Idle
@@ -15,7 +15,8 @@ constexpr const char* kWaferStage = R"(machine WaferStage {
 
 } // namespace
 
-TEST_CASE("parser builds machine AST", "[parser]") {
+TEST_CASE("parser builds machine AST", "[parser]")
+{
     core::SourceManager sources;
     const auto buffer = sources.add_memory_buffer("wafer.ax", kWaferStage);
 
@@ -30,11 +31,11 @@ TEST_CASE("parser builds machine AST", "[parser]") {
     REQUIRE(machine.transitions.size() == 2);
 }
 
-TEST_CASE("parser recovers from malformed machine body", "[parser]") {
+TEST_CASE("parser recovers from malformed machine body", "[parser]")
+{
     core::SourceManager sources;
-    const auto buffer = sources.add_memory_buffer(
-        "broken.ax",
-        "machine M { state A @@ transition A -> B on E }");
+    const auto buffer =
+        sources.add_memory_buffer("broken.ax", "machine M { state A @@ transition A -> B on E }");
 
     parser::Parser parser(sources, buffer);
     const auto result = parser.parse_translation_unit();

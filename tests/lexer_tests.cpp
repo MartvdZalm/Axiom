@@ -1,12 +1,11 @@
 #include <axiom/lexer/lexer.hpp>
-
 #include <catch2/catch_test_macros.hpp>
-
 #include <string>
 
 using namespace axiom;
 
-TEST_CASE("lexer tokenizes wafer stage keywords and punctuation", "[lexer]") {
+TEST_CASE("lexer tokenizes wafer stage keywords and punctuation", "[lexer]")
+{
     const std::string source = R"(
 machine WaferStage {
   state Idle
@@ -32,7 +31,8 @@ machine WaferStage {
     REQUIRE(state_kw.is(lexer::TokenKind::StateKw));
 }
 
-TEST_CASE("lexer reports invalid characters", "[lexer]") {
+TEST_CASE("lexer reports invalid characters", "[lexer]")
+{
     core::SourceManager sources;
     const auto buffer = sources.add_memory_buffer("bad.ax", "@");
 
